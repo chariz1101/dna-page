@@ -5,7 +5,7 @@ interface EventCardProps {
   imageUrl: string;
   imageAlt: string;
   title: string;
-  subtitle: string;
+  choreographers: string;
   status: string;
   link: string;
 }
@@ -14,7 +14,7 @@ export default function EventCard({
   imageUrl,
   imageAlt,
   title,
-  subtitle,
+  choreographers,
   status,
   link,
 }: EventCardProps) {
@@ -38,13 +38,13 @@ export default function EventCard({
 
         {/* Content Container */}
         <div className="p-4 bg-white">
-          <h2 className="text-sm font-bold text-gray-900 mb-1 line-clamp-2">
+          <h2 className="text-s font-bold text-gray-900 mb-1 line-clamp-2">
             {title}
           </h2>
-          <p className="text-xs text-gray-600 mb-3 line-clamp-1">
-            {subtitle}
+          <p className="text-sm italic text-gray-600 mb-3 line-clamp-1">
+            {choreographers}
           </p>
-          <span className="inline-block bg-gray-200 text-gray-800 font-medium px-3 py-1.5 rounded-full text-xs">
+          <span className="inline-block bg-gray-200 text-gray-800 font-medium px-3 py-1.5 rounded-full text-s">
             {status}
           </span>
         </div>

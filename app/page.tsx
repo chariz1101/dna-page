@@ -37,7 +37,7 @@ export default function Home() {
             imageUrl="/banner1.svg"
             imageAlt="PNAA Salin-Kaalaman 2026 event"
             title="PNAA Salin-Kaalaman 2026"
-            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            choreographers="Marfil, Elmaguin, Alapa, Josue, Torio"
             status="Intermission"
             link="https://www.facebook.com/events/123456789"
           />
@@ -45,7 +45,7 @@ export default function Home() {
             imageUrl="/banner1.svg"
             imageAlt="PNAA Salin-Kaalaman 2026 event"
             title="PNAA Salin-Kaalaman 2026"
-            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            choreographers="Marfil, Elmaguin, Alapa, Josue, Torio"
             status="Intermission"
             link="https://www.facebook.com/events/987654321"
           />
@@ -53,7 +53,7 @@ export default function Home() {
             imageUrl="/banner1.svg"
             imageAlt="PNAA Salin-Kaalaman 2026 event"
             title="PNAA Salin-Kaalaman 2026"
-            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            choreographers="Marfil, Elmaguin, Alapa, Josue, Torio"
             status="Intermission"
             link="https://www.facebook.com/events/456789123"
           />
@@ -61,7 +61,7 @@ export default function Home() {
             imageUrl="/banner1.svg"
             imageAlt="PNAA Salin-Kaalaman 2026 event"
             title="PNAA Salin-Kaalaman 2026"
-            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            choreographers="Marfil, Elmaguin, Alapa, Josue, Torio"
             status="Intermission"
             link="https://www.facebook.com/events/456789123"
           />
@@ -69,7 +69,7 @@ export default function Home() {
             imageUrl="/banner1.svg"
             imageAlt="PNAA Salin-Kaalaman 2026 event"
             title="PNAA Salin-Kaalaman 2026"
-            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            choreographers="Marfil, Elmaguin, Alapa, Josue, Torio"
             status="Intermission"
             link="https://www.facebook.com/events/456789123"
           />
