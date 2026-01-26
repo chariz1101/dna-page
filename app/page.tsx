@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Header } from "@/components/header";
+import EventCard from '@/components/performances-card';
 
 export default function Home() {
   return (
@@ -19,17 +20,60 @@ export default function Home() {
           </h1>
           <a className="text-4xl font-light text-white mt-2 block">
             Central Philippine University - College of Nursing
-            </a>
+          </a>
           <a className="text-5xl font-light italic text-white mt-30 ml-30 block">
             "One blood,
-            </a>
+          </a>
           <a className="text-5xl font-light italic text-white ml-40 block">
             One gene."
-            </a>
+          </a>
         </div>
       </div>
-      <div className="flex min-h-screen items-center justify-center">
-        <a>Hi!</a>
+      
+      {/* Event Cards Section */}
+      <div className="container mx-auto px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <EventCard
+            imageUrl="/banner1.svg"
+            imageAlt="PNAA Salin-Kaalaman 2026 event"
+            title="PNAA Salin-Kaalaman 2026"
+            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            status="Intermission"
+            link="https://www.facebook.com/events/123456789"
+          />
+          <EventCard
+            imageUrl="/banner1.svg"
+            imageAlt="PNAA Salin-Kaalaman 2026 event"
+            title="PNAA Salin-Kaalaman 2026"
+            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            status="Intermission"
+            link="https://www.facebook.com/events/987654321"
+          />
+          <EventCard
+            imageUrl="/banner1.svg"
+            imageAlt="PNAA Salin-Kaalaman 2026 event"
+            title="PNAA Salin-Kaalaman 2026"
+            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            status="Intermission"
+            link="https://www.facebook.com/events/456789123"
+          />
+          <EventCard
+            imageUrl="/banner1.svg"
+            imageAlt="PNAA Salin-Kaalaman 2026 event"
+            title="PNAA Salin-Kaalaman 2026"
+            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            status="Intermission"
+            link="https://www.facebook.com/events/456789123"
+          />
+          <EventCard
+            imageUrl="/banner1.svg"
+            imageAlt="PNAA Salin-Kaalaman 2026 event"
+            title="PNAA Salin-Kaalaman 2026"
+            subtitle="Marfil, Elmaguin, Alapa, Josue, Torio"
+            status="Intermission"
+            link="https://www.facebook.com/events/456789123"
+          />
+        </div>
       </div>
     </div>
   );
