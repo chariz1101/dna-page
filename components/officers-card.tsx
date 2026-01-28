@@ -1,54 +1,33 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
 
-interface EventCardProps {
+interface OfficersCardProps {
+  name: string;
+  position: string;
   imageUrl: string;
-  imageAlt: string;
-  title: string;
-  choreographers: string;
-  status: string;
-  link: string;
 }
 
-export default function EventCard({
-  imageUrl,
-  imageAlt,
-  title,
-  choreographers,
-  status,
-  link,
-}: EventCardProps) {
+export default function OfficersCard({ name, position, imageUrl }: OfficersCardProps) {
   return (
-    <a 
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="w-full block hover:scale-105 transition-transform duration-200"
-    >
-      <div className="bg-white rounded-2xl overflow-hidden shadow-md border-4 border-white cursor-pointer">
-        {/* Image Container */}
-        <div className="relative w-full aspect-square bg-black rounded-t-xl overflow-hidden">
+    <div className="bg-[#FFFFFF] rounded-3xl p-8 flex flex-col items-center text-center shadow-lg transition-transform hover:scale-105">
+      <div className="relative w-48 h-48 md:w-56 md:h-56 mb-6">
+        {/* Changed border-radius-50% to rounded-full */}
+        <div className="w-full h-full rounded-full overflow-hidden border-4 border-gray-100 relative">
           <Image
-            src={imageUrl}
-            alt={imageAlt}
+            src={imageUrl || "/logo.svg"}
+            alt={name}
             fill
             className="object-cover"
           />
         </div>
-
-        {/* Content Container */}
-        <div className="p-4 bg-white">
-          <h2 className="text-s font-bold text-gray-900 mb-1 line-clamp-2">
-            {title}
-          </h2>
-          <p className="text-sm italic text-gray-600 mb-3 line-clamp-1">
-            {choreographers}
-          </p>
-          <span className="inline-block bg-gray-200 text-gray-800 font-medium px-3 py-1.5 rounded-full text-s">
-            {status}
-          </span>
-        </div>
       </div>
-    </a>
+      <div className="space-y-1">
+        <h3 className="text-xl font-bold text-[#000000] tracking-tight">
+          {name}
+        </h3>
+        <p className="text-[#292929] font-light text-lg">
+          {position}
+        </p>
+      </div>
+    </div>
   );
 }

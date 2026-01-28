@@ -1,54 +1,37 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
 
-interface EventCardProps {
+interface MemberCardProps {
+  name: string;
+  yearSection?: string;
   imageUrl: string;
-  imageAlt: string;
-  title: string;
-  choreographers: string;
-  status: string;
-  link: string;
 }
 
-export default function EventCard({
-  imageUrl,
-  imageAlt,
-  title,
-  choreographers,
-  status,
-  link,
-}: EventCardProps) {
+export default function MemberCard({ name, yearSection, imageUrl }: MemberCardProps) {
   return (
-    <a 
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="w-full block hover:scale-105 transition-transform duration-200"
-    >
-      <div className="bg-white rounded-2xl overflow-hidden shadow-md border-4 border-white cursor-pointer">
-        {/* Image Container */}
-        <div className="relative w-full aspect-square bg-black rounded-t-xl overflow-hidden">
+    <div className="flex flex-col items-center text-center group">
+      {/* Circular Image Container */}
+      <div className="relative w-48 h-48 md:w-64 md:h-64 mb-6 transition-transform duration-300 group-hover:scale-105">
+        <div className="w-full h-full rounded-full overflow-hidden border-4 border-transparent bg-gray-800 shadow-xl">
           <Image
-            src={imageUrl}
-            alt={imageAlt}
+            src={imageUrl || "/logo.svg"}
+            alt={name}
             fill
             className="object-cover"
           />
         </div>
-
-        {/* Content Container */}
-        <div className="p-4 bg-white">
-          <h2 className="text-s font-bold text-gray-900 mb-1 line-clamp-2">
-            {title}
-          </h2>
-          <p className="text-sm italic text-gray-600 mb-3 line-clamp-1">
-            {choreographers}
-          </p>
-          <span className="inline-block bg-gray-200 text-gray-800 font-medium px-3 py-1.5 rounded-full text-s">
-            {status}
-          </span>
-        </div>
       </div>
-    </a>
+
+      {/* Name, Year and Section Details */}
+      <div className="space-y-1">
+        <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+          {name}
+        </h3>
+        {yearSection && (
+          <p className="text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mt-2">
+            Section {yearSection}
+          </p>
+        )}
+      </div>
+    </div>
   );
 }
