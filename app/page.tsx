@@ -64,7 +64,7 @@ export default async function Home() {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 mb-4 sm:mb-6 md:mb-8">
               Central Philippine University - College of Nursing
             </p>
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light italic text-[#ff3366]">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light italic text-[#00ff88]">
               "One blood, One gene."
             </p>
           </div>
@@ -133,8 +133,8 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 stagger-children">
           {/* Mission Section */}
-          <div className="space-y-4 sm:space-y-6 bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 hover:border-[#ff3366] transition-all duration-300">
-            <h3 className="text-2xl sm:text-3xl font-bold uppercase text-center text-[#ff3366]">Mission</h3>
+          <div className="space-y-4 sm:space-y-6 bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 hover:border-[#00ff88] transition-all duration-300">
+            <h3 className="text-2xl sm:text-3xl font-bold uppercase text-center text-[#00ff88]">Mission</h3>
             <p className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed text-center">
               Our mission is to cultivate a community of student nurses who find renewal, balance, 
               and creative fulfillment through dance. We are committed to fostering excellence, 
@@ -144,8 +144,8 @@ export default async function Home() {
           </div>
 
           {/* Vision Section */}
-          <div className="space-y-4 sm:space-y-6 bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 hover:border-[#ff3366] transition-all duration-300">
-            <h3 className="text-2xl sm:text-3xl font-bold uppercase text-center text-[#ff3366]">Vision</h3>
+          <div className="space-y-4 sm:space-y-6 bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 hover:border-[#00ff88] transition-all duration-300">
+            <h3 className="text-2xl sm:text-3xl font-bold uppercase text-center text-[#00ff88]">Vision</h3>
             <p className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed text-center">
               We envision a community where dance serves as a universal language and a restorative 
               space, particularly for student nurses who navigate the rigors of academic and 

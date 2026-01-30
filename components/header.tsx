@@ -12,17 +12,17 @@ export function Header() {
         { name: "Home", path: "/" },
         { name: "Performances", path: "/performances" },
         { name: "Members", path: "/members" },
-        { name: "About Us", path: "/about" },
+        { name: "About Us", path: "/about-us" },
     ];
 
     const pathname = usePathname();
 
     return (
-        <header className="backdrop-blur-md bg-black/60 border-b border-white/5 text-white sticky top-0 z-50">
-            <div className="container-custom py-4">
+        <header className="backdrop-blur-xl bg-black/90 border-b border-white/5 text-white sticky top-0 z-50">
+            <div className="container-custom py-5">
                 <div className="flex justify-between items-center">
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex gap-8">
+                    <nav className="hidden md:flex gap-10">
                         {navItems.map((item) => {
                             const isActive = pathname === item.path;
 
@@ -30,13 +30,16 @@ export function Header() {
                                 <Link
                                     key={item.name}
                                     href={item.path}
-                                    className={`transition-all duration-300 text-sm uppercase tracking-wider ${
+                                    className={`relative transition-all duration-300 text-sm uppercase tracking-[0.15em] font-medium ${
                                         isActive
-                                            ? "text-[#ff3366] font-bold"
-                                            : "text-gray-300 hover:text-white"
+                                            ? "text-[#00ff88]"
+                                            : "text-gray-400 hover:text-white"
                                     }`}
                                 >
                                     {item.name}
+                                    {isActive && (
+                                        <span className="absolute -bottom-[21px] left-0 right-0 h-[2px] bg-[#00ff88] shadow-[0_0_10px_rgba(0,255,136,0.5)]" />
+                                    )}
                                 </Link>
                             );
                         })}
@@ -45,7 +48,7 @@ export function Header() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden text-white focus:outline-none"
+                        className="md:hidden text-white focus:outline-none hover:text-[#00ff88] transition-colors"
                         aria-label="Toggle menu"
                     >
                         <svg
@@ -73,7 +76,7 @@ export function Header() {
                     </button>
                     
                     {/* Logo Section */}
-                    <Link href="/" className="w-12 h-12 bg-white/10 rounded-full backdrop-blur-sm flex items-center justify-center overflow-hidden border border-white/20 hover:border-[#ff3366] transition-colors">
+                    <Link href="/" className="w-12 h-12 bg-white/5 rounded-lg backdrop-blur-sm flex items-center justify-center overflow-hidden border border-white/10 hover:border-[#00ff88] transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)]">
                         <Image 
                             src="/logo.svg" 
                             alt="DNA Logo" 
@@ -86,7 +89,7 @@ export function Header() {
 
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
-                    <nav className="md:hidden mt-4 pt-4 border-t border-white/10 space-y-3 animate-in fade-in slide-in-from-top duration-300">
+                    <nav className="md:hidden mt-6 pt-6 border-t border-white/10 space-y-2 animate-in fade-in slide-in-from-top duration-300">
                         {navItems.map((item) => {
                             const isActive = pathname === item.path;
 
@@ -95,10 +98,10 @@ export function Header() {
                                     key={item.name}
                                     href={item.path}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className={`block py-2 px-4 rounded-lg transition-all text-sm uppercase tracking-wider ${
+                                    className={`block py-3 px-4 rounded-lg transition-all text-sm uppercase tracking-[0.15em] font-medium border ${
                                         isActive
-                                            ? "bg-[#ff3366] text-white font-bold"
-                                            : "text-gray-300 hover:bg-white/5 hover:text-white"
+                                            ? "bg-[#00ff88]/10 text-[#00ff88] border-[#00ff88]/30 shadow-[0_0_20px_rgba(0,255,136,0.2)]"
+                                            : "text-gray-400 hover:bg-white/5 hover:text-white border-transparent"
                                     }`}
                                 >
                                     {item.name}
