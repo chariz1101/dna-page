@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "D.N.A.",
+  title: "D.N.A. - Dancing Nurses Association",
   description: "Official page of Central Philippine University - College of Nursing's Dancing Nurses Association.",
+  keywords: "Dancing Nurses Association, D.N.A., CPU, Central Philippine University, College of Nursing, Dance Organization",
+  authors: [{ name: "Dancing Nurses Association" }],
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+  themeColor: "#0a0a0a",
+  openGraph: {
+    title: "D.N.A. - Dancing Nurses Association",
+    description: "Official page of Central Philippine University - College of Nursing's Dancing Nurses Association.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -24,9 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className="antialiased">
         {children}
       </body>
     </html>

@@ -21,62 +21,54 @@ export default function EventCard({
   link,
 }: EventCardProps) {
   const [imgError, setImgError] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <div 
-      className="relative block hover:scale-105 transition-transform duration-200"
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
+    <a 
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block"
     >
-      <a 
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div className="bg-white rounded-2xl overflow-hidden shadow-md border-4 border-white cursor-pointer w-[280px] h-[380px] flex flex-col">
-          {/* Image Container - Fixed Height */}
-          <div className="relative w-full h-[280px] bg-black flex-shrink-0 overflow-hidden">
-            <Image
-              src={!imgError && imageUrl ? imageUrl : '/banner1.svg'}
-              alt={imageAlt}
-              fill
-              className="object-cover"
-              onError={() => setImgError(true)}
-              unoptimized
-            />
-          </div>
+      <div className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#ff3366] transition-all duration-300 hover:shadow-2xl hover:shadow-[#ff3366]/20 w-full h-full flex flex-col transform hover:-translate-y-2">
+        {/* Image Container - Responsive Height */}
+        <div className="relative w-full aspect-[4/5] bg-black flex-shrink-0 overflow-hidden">
+          <Image
+            src={!imgError && imageUrl ? imageUrl : '/banner1.svg'}
+            alt={imageAlt}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            onError={() => setImgError(true)}
+            unoptimized
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
 
-          {/* Content Container - Fixed Height */}
-          <div className="p-4 bg-white h-[100px] flex-shrink-0 flex flex-col justify-between">
-            <div>
-              <h2 className="text-sm font-bold text-gray-900 mb-1 line-clamp-1">
-                {title}
-              </h2>
-              <p className="text-xs italic text-gray-600 mb-2 line-clamp-1">
-                {choreographers}
-              </p>
-            </div>
-            <span className="inline-block bg-gray-200 text-gray-800 font-medium px-3 py-1 rounded-full text-xs w-fit">
+        {/* Content Container */}
+        <div className="p-4 sm:p-5 bg-white flex-1 flex flex-col justify-between">
+          <div>
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#ff3366] transition-colors">
+              {title}
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-600 mb-3 line-clamp-2">
+              <span className="font-semibold">By:</span> {choreographers}
+            </p>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="inline-block bg-gray-900 text-white font-medium px-3 py-1.5 rounded-full text-xs uppercase tracking-wider">
               {status}
             </span>
+            <svg 
+              className="w-5 h-5 text-[#ff3366] transform group-hover:translate-x-1 transition-transform"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </div>
         </div>
-      </a>
-
-      {/* Tooltip on hover */}
-      {showTooltip && (
-        <div className="absolute z-50 bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-900 text-white text-sm rounded-lg shadow-xl p-4 pointer-events-none">
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-3 h-3 bg-gray-900"></div>
-          <h3 className="font-bold mb-2">{title}</h3>
-          <p className="text-xs mb-2">
-            <span className="font-semibold">Choreographers:</span> {choreographers}
-          </p>
-          <p className="text-xs">
-            <span className="font-semibold">Type:</span> {status}
-          </p>
-        </div>
-      )}
-    </div>
+      </div>
+    </a>
   );
 }
