@@ -78,8 +78,8 @@ export default async function Home() {
           <p className="text-gray-400 text-base sm:text-lg md:text-xl">A wide range of performances made by the organization.</p>
         </div>
         
-        {/* Responsive grid - 1 col mobile, 2 col tablet, 3-5 cols desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 md:gap-8 stagger-children">
+        {/* Responsive grid - 1 col mobile, 2 col tablet, 3-4 cols desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 stagger-children">
           {videos.map((video) => (
             <EventCard
               key={video.id}
@@ -110,7 +110,7 @@ export default async function Home() {
         </div>
 
         {/* Responsive grid for officers */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-8 stagger-children">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-6 sm:gap-8 stagger-children">
           {officers.map((officer) => (
             <OfficersCard
               key={officer.id}
