@@ -2,11 +2,11 @@ import Image from "next/image";
 
 interface MemberCardProps {
   name: string;
-  yearSection?: string;
+  yearandsectionm: string;
   imageUrl: string;
 }
 
-export default function MemberCard({ name, yearSection, imageUrl }: MemberCardProps) {
+export default function MemberCard({ name, yearandsectionm, imageUrl }: MemberCardProps) {
   return (
     <div className="flex flex-col items-center text-center group">
       {/* Circular Image Container */}
@@ -25,14 +25,12 @@ export default function MemberCard({ name, yearSection, imageUrl }: MemberCardPr
 
       {/* Name and Section */}
       <div className="space-y-1">
-        <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight group-hover:text-[#00ff88] transition-colors duration-300 uppercase">
+        <h3 className="text-base sm:text-m md:text-lg font-bold text-white tracking-tight group-hover:text-[#00ff88] transition-colors duration-300 uppercase">
           {name}
         </h3>
-        {yearSection && (
-          <p className="text-xs text-gray-600 font-medium uppercase tracking-[0.2em]">
-            {yearSection}
+          <p className="text-m text-gray-500 font-medium uppercase tracking-[0.2em]">
+            {yearandsectionm}
           </p>
-        )}
       </div>
     </div>
   );

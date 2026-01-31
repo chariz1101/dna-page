@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     const { rows } = await sql`
-      SELECT id, name, position, image, "year-and-section" AS "yearAndSection" 
+      SELECT id, name, position, image, yearAndSection 
       FROM officers 
       ORDER BY id ASC
     `;

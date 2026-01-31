@@ -23,25 +23,25 @@ export async function POST() {
     if (offRes.data.values) {
       await sql`DROP TABLE IF EXISTS officers`;
       await sql`CREATE TABLE officers (
-        id SERIAL PRIMARY KEY, sheet_id INTEGER, name TEXT, position TEXT, "year-and-section" TEXT, image TEXT
+        id SERIAL PRIMARY KEY, sheet_id INTEGER, name TEXT, position TEXT, yearAndSectionM TEXT, image TEXT
       )`;
       for (const row of offRes.data.values.slice(1)) {
         const [sid, name, pos, ys, img] = row;
-        await sql`INSERT INTO officers (sheet_id, name, position, "year-and-section", image) 
+        await sql`INSERT INTO officers (sheet_id, name, position, yearAndSectionM, image) 
                   VALUES (${sid ? parseInt(sid) : null}, ${name || null}, ${pos || null}, ${ys || null}, ${img || null})`;
       }
     }
 
     // 2. SYNC MEMBERS
-    const memRes = await sheets.spreadsheets.values.get({ spreadsheetId, range: 'members!A:E' });
+    const memRes = await sheets.spreadsheets.values.get({ spreadsheetId, range: 'members!A:D' });
     if (memRes.data.values) {
       await sql`DROP TABLE IF EXISTS members`;
       await sql`CREATE TABLE members (
-        id SERIAL PRIMARY KEY, sheet_id INTEGER, name TEXT, "year-and-section" TEXT, image TEXT
+        id SERIAL PRIMARY KEY, sheet_id INTEGER, name TEXT, yearAndSectionM TEXT, image TEXT
       )`;
       for (const row of memRes.data.values.slice(1)) {
-        const [sid, name, _, ys, img] = row;
-        await sql`INSERT INTO members (sheet_id, name, "year-and-section", image) 
+        const [sid, name, ys, img] = row;
+        await sql`INSERT INTO members (sheet_id, name, yearAndSectionM, image) 
                   VALUES (${sid ? parseInt(sid) : null}, ${name || null}, ${ys || null}, ${img || null})`;
       }
     }

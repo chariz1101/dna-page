@@ -103,7 +103,7 @@ export default async function MembersPage() {
               <MemberCard
                 key={member.id}
                 name={member.name}
-                yearSection={member['year-and-section']}
+                yearandsectionm={member.yearandsectionm}
                 imageUrl={member.image}
               />
             ))}
