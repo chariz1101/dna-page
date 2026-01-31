@@ -4,7 +4,7 @@ export default function AboutPage() {
   const socialLinks = [
     {
       name: 'TikTok',
-      url: 'https://www.tiktok.com/@dna.cpu',
+      url: 'https://www.tiktok.com/@dna__2007',
       color: 'hover:text-[#00f2ea]',
       bgHover: 'hover:bg-[#00f2ea]/10',
       borderHover: 'hover:border-[#00f2ea]',
@@ -16,7 +16,7 @@ export default function AboutPage() {
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/dna.cpu/',
+      url: 'https://www.instagram.com/cpucon_dna',
       color: 'hover:text-[#E1306C]',
       bgHover: 'hover:bg-[#E1306C]/10',
       borderHover: 'hover:border-[#E1306C]',
@@ -28,7 +28,7 @@ export default function AboutPage() {
     },
     {
       name: 'Facebook',
-      url: 'https://www.facebook.com/dnacpu',
+      url: 'https://web.facebook.com/cpucondna',
       color: 'hover:text-[#1877F2]',
       bgHover: 'hover:bg-[#1877F2]/10',
       borderHover: 'hover:border-[#1877F2]',
