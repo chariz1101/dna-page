@@ -9,7 +9,7 @@ async function getVideos() {
     const { rows } = await sql`
       SELECT * FROM videos 
       ORDER BY sheet_id DESC
-      LIMIT 5
+      LIMIT 4
     `;
     return rows;
   } catch (error) {
@@ -24,7 +24,7 @@ async function getFeaturedOfficers() {
       SELECT id, name, position, image 
       FROM officers 
       ORDER BY id ASC
-      LIMIT 5
+      LIMIT 4
     `;
     return rows;
   } catch (error) {
