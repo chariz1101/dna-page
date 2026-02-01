@@ -160,7 +160,7 @@ export default async function Home() {
       <footer className="border-t border-white/10 py-8 sm:py-12 text-center">
         <div className="container-custom">
           <p className="text-gray-500 text-sm sm:text-base">
-            © {new Date().getFullYear()} Dancing Nurses Association. All rights reserved.
+            © {new Date().getFullYear()} .charchives - All rights reserved
           </p>
         </div>
       </footer>

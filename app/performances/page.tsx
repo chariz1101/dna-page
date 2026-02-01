@@ -110,11 +110,11 @@ export default async function PerformancesPage() {
         <div className="container-custom">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-gray-600 text-sm uppercase tracking-[0.2em]">
-              © {new Date().getFullYear()} D.N.A.
+              © {new Date().getFullYear()} .charchives
             </p>
             <div className="flex items-center gap-2">
               <div className="w-8 h-[1px] bg-[#00ff88]" />
-              <p className="text-gray-600 text-xs uppercase tracking-widest">Dancing Nurses Association</p>
+              <p className="text-gray-600 text-xs uppercase tracking-widest">All rights reserved.</p>
             </div>
           </div>
         </div>
