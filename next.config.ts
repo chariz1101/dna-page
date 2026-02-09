@@ -20,6 +20,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'scontent.fceb6-4.fna.fbcdn.net',
+      },
+      {
+        protocol: 'https',
         hostname: 'placehold.co',
       },
     ],
