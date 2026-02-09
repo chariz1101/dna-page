@@ -140,7 +140,7 @@ export default async function Home() {
       <div className="container-custom py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="mb-8 sm:mb-10 md:mb-12 fade-in flex justify-between items-end">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-2 sm:mb-3">Merch</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-2 sm:mb-3">Merchandise</h2>
             <p className="text-gray-400 text-base sm:text-lg md:text-xl">Support with official gear.</p>
           </div>
           <Link href="/merch" className="hidden sm:block text-[#00ff88] uppercase tracking-widest text-sm hover:underline hover:text-white transition-colors">
