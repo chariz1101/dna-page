@@ -1,0 +1,73 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+export default function MerchPopup() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Show the popup 1.5 seconds after the page loads for better UX
+  useEffect(() => {
+    const timer = setTimeout(() => setIsOpen(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-sm transition-opacity">
+      {/* Backdrop Click to Close */}
+      <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
+
+      {/* Popup Container - Made smaller (max-w-[320px]) and reduced padding slightly */}
+      <div className="relative w-full max-w-[280px] sm:max-w-[320px] bg-[#0a0a0a] border border-[#00ff88]/30 rounded-2xl p-4 sm:p-5 shadow-[0_0_50px_rgba(0,255,136,0.15)] animate-in fade-in zoom-in duration-300">
+        
+        {/* Close 'X' Button - Moved slightly outside, thicker line, high contrast */}
+        <button 
+          onClick={() => setIsOpen(false)}
+          className="absolute -top-3 -right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#0a0a0a] border-2 border-[#00ff88] text-white hover:bg-[#00ff88] hover:text-black shadow-[0_0_15px_rgba(0,255,136,0.3)] transition-all duration-300"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* Promo Image */}
+        <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-4 border border-white/5">
+          <Image
+            src="https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/484860773_666764385907564_7255658188100181093_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGCC_-afx1L5QUR_NRgb7ZUT6ViHL8nCaNPpWIcvycJozD79lx3khOfPXX2fM1TUNmlAjgXs27S9KlgGf59gdG3&_nc_ohc=YDcAzuCwy6EQ7kNvwFqazeD&_nc_oc=AdkIc8jeFwsFB5X5ovAl9tYcbqk3mdohggSgOYg1OAf60UrJjsw08SPyIASOsQUPckQ&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=qGd4Bf4gA53ozT_cHHamHw&oh=00_AfsTcspsRCfAO0x2tMv0yxlxsZf8JLCVd4Qh7I8iGTDQaQ&oe=698FF8CD"
+            alt="New Merch Drop"
+            fill
+            className="object-cover"
+          />
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
+
+        {/* Text Content - Scaled down text to match smaller container */}
+        <div className="text-center mb-5">
+          <span className="inline-block px-3 py-1 bg-[#00ff88]/10 text-[#00ff88] text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-full mb-2">
+            Limited Time
+          </span>
+          <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-tight mb-2">
+            New Merch Drop
+          </h3>
+          <p className="text-gray-400 text-xs sm:text-sm px-2">
+            Grab the official D.N.A. collection before it sells out.
+          </p>
+        </div>
+
+        {/* Order Button - Reduced vertical padding slightly */}
+        <a 
+          href="https://docs.google.com/forms/your-link-here" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          onClick={() => setIsOpen(false)}
+          className="block w-full text-center bg-[#00ff88] text-black text-sm sm:text-base font-bold uppercase tracking-widest py-3 rounded-xl hover:bg-white hover:shadow-[0_0_20px_rgba(0,255,136,0.4)] transition-all duration-300"
+        >
+          Order Now
+        </a>
+      </div>
+    </div>
+  );
+}

@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import EventCard from '@/components/performances-card';
 import OfficersCard from '@/components/officers-card';
 import MerchCard from '@/components/merch-card'; 
+import MerchPopup from '@/components/merch-popup';
 
 // Static Data
 const featuredMerch = [
@@ -43,7 +44,12 @@ export default async function Home() {
   const officers = await getFeaturedOfficers();
 
   return (
+    
     <div className="gradient-bg min-h-screen text-white">
+      
+      {/* Drops the popup over everything else */}
+      {/* <MerchPopup /> */}
+
       <Header />
       
       {/* Hero */}
