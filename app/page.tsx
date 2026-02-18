@@ -48,7 +48,7 @@ export default async function Home() {
     <div className="gradient-bg min-h-screen text-white">
       
       {/* Drops the popup over everything else */}
-      {/* <MerchPopup /> */}
+      <MerchPopup />
 
       <Header />
       

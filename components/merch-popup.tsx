@@ -35,7 +35,7 @@ export default function MerchPopup() {
         {/* Promo Image */}
         <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-4 border border-white/5">
           <Image
-            src="https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/484860773_666764385907564_7255658188100181093_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGCC_-afx1L5QUR_NRgb7ZUT6ViHL8nCaNPpWIcvycJozD79lx3khOfPXX2fM1TUNmlAjgXs27S9KlgGf59gdG3&_nc_ohc=YDcAzuCwy6EQ7kNvwFqazeD&_nc_oc=AdkIc8jeFwsFB5X5ovAl9tYcbqk3mdohggSgOYg1OAf60UrJjsw08SPyIASOsQUPckQ&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=qGd4Bf4gA53ozT_cHHamHw&oh=00_AfsTcspsRCfAO0x2tMv0yxlxsZf8JLCVd4Qh7I8iGTDQaQ&oe=698FF8CD"
+            src="https://scontent.fmnl4-5.fna.fbcdn.net/v/t39.30808-6/632696972_923127213604612_7792352585874860307_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeEf5O2tXlYeRvmMTTVx1jNOcH9w8rKOLDdwf3Dyso4sN5dupiTWInucFaux3n1ojJfM9ZAFKMo4CTxOtgj4aVir&_nc_ohc=ljcgpSWheJwQ7kNvwF2GifV&_nc_oc=Admm9bWowfYD3xw5_h7v44F4USlxQVyJoeGVmo5cu3q-gWPmTeJVFVp4KeiDW09SEPU&_nc_zt=23&_nc_ht=scontent.fmnl4-5.fna&_nc_gid=WWGm6n6233absdfy-7t0Mg&oh=00_Aft4fJ818Sv1RWMcOK7PY3VKX0wRDSNyFklvu1w-t6x1vQ&oe=699B8726"
             alt="New Merch Drop"
             fill
             className="object-cover"
@@ -59,7 +59,7 @@ export default function MerchPopup() {
 
         {/* Order Button - Reduced vertical padding slightly */}
         <a 
-          href="https://docs.google.com/forms/your-link-here" 
+          href="https://forms.gle/QzrtiwbV1fMHrjHcA" 
           target="_blank" 
           rel="noopener noreferrer"
           onClick={() => setIsOpen(false)}
