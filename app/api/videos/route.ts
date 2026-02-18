@@ -1,5 +1,7 @@
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
 import { NextRequest, NextResponse } from 'next/server';
+
+const sql = neon(process.env.DATABASE_URL!);
 
 export const dynamic = 'force-dynamic';
 
@@ -10,11 +12,11 @@ export async function GET(request: NextRequest) {
     const type = searchParams.get('type');
     const limit = searchParams.get('limit') || '50';
     
-    let result;
+    let videos; // Changed from 'result' to 'videos'
     
     if (type) {
       // Filter by type
-      result = await sql`
+      videos = await sql`
         SELECT * FROM videos 
         WHERE type = ${type}
         ORDER BY sheet_id ASC
@@ -22,7 +24,7 @@ export async function GET(request: NextRequest) {
       `;
     } else {
       // Get all videos
-      result = await sql`
+      videos = await sql`
         SELECT * FROM videos 
         ORDER BY sheet_id ASC
         LIMIT ${parseInt(limit)}
@@ -31,8 +33,8 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      count: result.rows.length,
-      videos: result.rows
+      count: videos.length, 
+      videos: videos        
     });
 
   } catch (error) {

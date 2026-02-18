@@ -1,6 +1,8 @@
 import { Header } from "@/components/header";
 import MerchCard from "@/components/merch-card";
 
+export const dynamic = 'force-dynamic';
+
 const merchandiseData = [
   {
     id: 1,

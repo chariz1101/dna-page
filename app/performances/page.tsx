@@ -1,11 +1,15 @@
 import { Header } from "@/components/header";
 import EventCard from '@/components/performances-card';
 import PerformancesFeed from "@/components/performances-feed";
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
+
+const sql = neon(process.env.DATABASE_URL!);
+
+export const dynamic = 'force-dynamic';
 
 async function getVideos() {
   try {
-    const { rows } = await sql`
+    const rows = await sql`
       SELECT * FROM videos 
       ORDER BY sheet_id DESC
     `;

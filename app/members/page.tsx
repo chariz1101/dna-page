@@ -1,11 +1,15 @@
 import { Header } from "@/components/header";
 import OfficersCard from "@/components/officers-card";
 import MemberCard from "@/components/members-card";
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
+
+const sql = neon(process.env.DATABASE_URL!);
+
+export const dynamic = 'force-dynamic';
 
 async function getOfficers() {
   try {
-    const { rows } = await sql`SELECT * FROM officers ORDER BY id ASC`;
+    const rows = await sql`SELECT * FROM officers ORDER BY id ASC`;
     return rows;
   } catch (error) {
     console.error('Error fetching officers:', error);
@@ -15,7 +19,7 @@ async function getOfficers() {
 
 async function getMembers() {
   try {
-    const { rows } = await sql`SELECT * FROM members ORDER BY name ASC`;
+    const rows = await sql`SELECT * FROM members ORDER BY name ASC`;
     return rows;
   } catch (error) {
     console.error('Error fetching members:', error);
