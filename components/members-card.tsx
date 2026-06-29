@@ -3,7 +3,7 @@ import Image from "next/image";
 interface MemberCardProps {
   name: string;
   yearandsectionm: string;
-  imageUrl: string;
+  imageUrl: string | null;
 }
 
 export default function MemberCard({ name, yearandsectionm, imageUrl }: MemberCardProps) {
@@ -16,7 +16,12 @@ export default function MemberCard({ name, yearandsectionm, imageUrl }: MemberCa
             src={imageUrl || "/logo.svg"}
             alt={name}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="transition-transform duration-700"
+            style={{
+              objectFit: "cover",
+              objectPosition: "top center",
+              transform: "scale(1.4)",
+            }}
           />
         </div>
         {/* Glow effect */}
@@ -28,9 +33,9 @@ export default function MemberCard({ name, yearandsectionm, imageUrl }: MemberCa
         <h3 className="text-base sm:text-m md:text-lg font-bold text-white tracking-tight group-hover:text-[#00ff88] transition-colors duration-300 uppercase">
           {name}
         </h3>
-          <p className="text-m text-gray-500 font-medium uppercase tracking-[0.2em]">
-            {yearandsectionm}
-          </p>
+        <p className="text-m text-gray-500 font-medium uppercase tracking-[0.2em]">
+          {yearandsectionm}
+        </p>
       </div>
     </div>
   );

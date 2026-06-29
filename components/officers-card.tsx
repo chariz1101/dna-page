@@ -3,7 +3,7 @@ import Image from "next/image";
 interface OfficersCardProps {
   name: string;
   position: string;
-  imageUrl: string;
+  imageUrl: string | null;
 }
 
 export default function OfficersCard({ name, position, imageUrl }: OfficersCardProps) {

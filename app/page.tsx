@@ -42,10 +42,20 @@ async function getVideos() {
   } catch (error) { return []; }
 }
 
-async function getFeaturedOfficers() {
+interface Officer {
+  id: number;
+  name: string;
+  position: string;
+  image: string | null;
+}
+
+async function getFeaturedOfficers(): Promise<Officer[]> {
   try {
-    const rows = await sql`SELECT id, name, position, image FROM officers ORDER BY id ASC LIMIT 4`;
-    return rows;
+    const rows = await sql`SELECT id, name, position, image FROM officers ORDER BY id ASC LIMIT 4` as Officer[];
+    return rows.map(row => ({
+      ...row,
+      image: row.image ? `/images/officers/${row.image}` : null,
+    }));
   } catch (error) { return []; }
 }
 

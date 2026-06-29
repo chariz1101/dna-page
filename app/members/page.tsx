@@ -7,20 +7,41 @@ const sql = neon(process.env.DATABASE_URL!);
 
 export const dynamic = 'force-dynamic';
 
-async function getOfficers() {
+interface Officer {
+  id: number;
+  name: string;
+  position: string;
+  image: string | null;
+  sheet_id?: number;
+}
+
+interface Member {
+  id: number;
+  name: string;
+  yearandsectionm: string;
+  image: string | null;
+}
+
+async function getOfficers(): Promise<Officer[]> {
   try {
-    const rows = await sql`SELECT * FROM officers ORDER BY id ASC`;
-    return rows;
+    const rows = await sql`SELECT * FROM officers ORDER BY id ASC` as Officer[];
+    return rows.map(row => ({
+      ...row,
+      image: row.image ? `/images/officers/${row.image}` : null,
+    }));
   } catch (error) {
     console.error('Error fetching officers:', error);
     return [];
   }
 }
 
-async function getMembers() {
+async function getMembers(): Promise<Member[]> {
   try {
-    const rows = await sql`SELECT * FROM members ORDER BY name ASC`;
-    return rows;
+    const rows = await sql`SELECT * FROM members ORDER BY name ASC` as Member[];
+    return rows.map(row => ({
+      ...row,
+      image: row.image ? `/images/members/${row.image}` : null,
+    }));
   } catch (error) {
     console.error('Error fetching members:', error);
     return [];
