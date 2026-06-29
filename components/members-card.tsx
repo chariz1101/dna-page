@@ -16,7 +16,7 @@ export default function MemberCard({ name, yearandsectionm, imageUrl }: MemberCa
             src={imageUrl || "/logo.svg"}
             alt={name}
             fill
-            className="transition-transform duration-700"
+            className="object-cover scale-70 transition-transform duration-700"
             style={{
               objectFit: "cover",
               objectPosition: "top center",
