@@ -12,7 +12,7 @@ export function Header() {
         { name: "Home", path: "/" },
         { name: "Performances", path: "/performances" },
         { name: "Members", path: "/members" },
-        { name: "Merchandise", path: "/merchandise" },
+        // { name: "Merchandise", path: "/merchandise" },
         { name: "About Us", path: "/about-us" },
     ];
 
