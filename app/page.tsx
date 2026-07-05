@@ -75,7 +75,7 @@ export default async function Home() {
       {/* Hero */}
       <div className="relative -mt-[72px] overflow-hidden">
         <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]">
-          <Image src="/banner1.svg" alt="Banner" fill className="object-cover object-center" priority />
+          <Image src="/banner.jpg" alt="Banner" fill className="object-cover object-center" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
         </div>
         <div className="absolute inset-0 flex items-end pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-8 md:px-12 lg:px-16">

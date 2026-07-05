@@ -79,8 +79,6 @@ export default function PerformancesFeed({ initialVideos }: { initialVideos: any
         {filteredVideos.map((video) => (
           <EventCard
             key={video.id}
-            imageUrl={video.image || "/banner1.svg"}
-            imageAlt={`${video.title} event`}
             title={video.title}
             choreographers={video.choreographers || "N/A"}
             status={video.type || "Event"}
