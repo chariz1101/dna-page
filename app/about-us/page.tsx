@@ -1,14 +1,12 @@
 import { Header } from "@/components/header";
-
 export const dynamic = 'force-dynamic';
-
 export default function AboutPage() {
   const socialLinks = [
     {
       name: 'TikTok',
       url: 'https://www.tiktok.com/@dna__2007',
-      color: 'hover:text-[#00f2ea]',
-      bgHover: 'hover:bg-[#00f2ea]/10',
+      color: 'group-hover:text-[#00f2ea]',
+      bgHover: 'group-hover:bg-[#00f2ea]/10',
       borderHover: 'hover:border-[#00f2ea]',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16 sm:w-20 sm:h-20">
@@ -19,8 +17,8 @@ export default function AboutPage() {
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/cpucon_dna',
-      color: 'hover:text-[#E1306C]',
-      bgHover: 'hover:bg-[#E1306C]/10',
+      color: 'group-hover:text-[#E1306C]',
+      bgHover: 'group-hover:bg-[#E1306C]/10',
       borderHover: 'hover:border-[#E1306C]',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16 sm:w-20 sm:h-20">
@@ -31,21 +29,32 @@ export default function AboutPage() {
     {
       name: 'Facebook',
       url: 'https://web.facebook.com/cpucondna',
-      color: 'hover:text-[#1877F2]',
-      bgHover: 'hover:bg-[#1877F2]/10',
+      color: 'group-hover:text-[#1877F2]',
+      bgHover: 'group-hover:bg-[#1877F2]/10',
       borderHover: 'hover:border-[#1877F2]',
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-16 h-16 sm:w-20 sm:h-20">
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
       )
+    },
+    {
+      name: 'Email',
+      url: 'mailto:cpucondna@gmail.com',
+      color: 'group-hover:text-[#EA4335]',
+      bgHover: 'group-hover:bg-[#EA4335]/10',
+      borderHover: 'hover:border-[#EA4335]',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16 sm:w-20 sm:h-20">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m2 6 10 7 10-7" />
+        </svg>
+      )
     }
   ];
-
   return (
     <div className="min-h-screen bg-black text-white grid-bg">
       <Header />
-
       <main className="container-custom py-12 sm:py-16 md:py-20 lg:py-24">
         
         {/* Page Header */}
@@ -60,7 +69,6 @@ export default function AboutPage() {
             Who We Are
           </p>
         </div>
-
         {/* Mission & Vision Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-20 sm:mb-24 md:mb-32 stagger-children">
           
@@ -88,7 +96,6 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-
           {/* Vision Card */}
           <div className="group relative bg-[#0a0a0a] rounded-3xl p-8 sm:p-10 md:p-12 border border-white/10 hover:border-[#00ff88] transition-all duration-500 overflow-hidden">
             {/* Background glow effect */}
@@ -113,12 +120,9 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-
         </div>
-
         {/* Divider */}
         <div className="h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-20 sm:mb-24 md:mb-32" />
-
         {/* Connect With Us Section */}
         <div className="fade-in">
           <div className="mb-12 sm:mb-16">
@@ -132,7 +136,6 @@ export default function AboutPage() {
               Follow our journey on social media
             </p>
           </div>
-
           {/* Social Media Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {socialLinks.map((social) => (
@@ -178,10 +181,8 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-
         {/* Divider */}
         <div className="h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent my-20 sm:my-24 md:my-32" />
-
         {/* Organization Info */}
         <div className="text-center max-w-4xl mx-auto fade-in">
           <div className="bg-[#0a0a0a] rounded-3xl p-8 sm:p-10 md:p-12 border border-white/10">
@@ -198,9 +199,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-
       </main>
-
       {/* Footer */}
       <footer className="border-t border-white/5 py-8 sm:py-12 mt-20 sm:mt-28">
         <div className="container-custom">
