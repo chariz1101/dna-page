@@ -1,5 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 import { NextRequest, NextResponse } from 'next/server';
+import { getCached } from '@/lib/redis';
 
 const sql = neon(process.env.DATABASE_URL!);
 
@@ -12,31 +13,31 @@ export async function GET(request: NextRequest) {
     const type = searchParams.get('type');
     const limit = searchParams.get('limit') || '50';
     
-    let videos; // Changed from 'result' to 'videos'
+    const cacheKey = `videos:${type ?? 'all'}:${limit}`;
     
-    if (type) {
-      // Filter by type
-      videos = await sql`
-        SELECT * FROM videos 
-        WHERE type = ${type}
-        ORDER BY sheet_id ASC
-        LIMIT ${parseInt(limit)}
-      `;
-    } else {
-      // Get all videos
-      videos = await sql`
-        SELECT * FROM videos 
-        ORDER BY sheet_id ASC
-        LIMIT ${parseInt(limit)}
-      `;
-    }
-
+    const videos = await getCached(cacheKey, 60, async () => {
+      if (type) {
+        return await sql`
+          SELECT * FROM videos 
+          WHERE type = ${type}
+          ORDER BY sheet_id ASC
+          LIMIT ${parseInt(limit)}
+        `;
+      } else {
+        return await sql`
+          SELECT * FROM videos 
+          ORDER BY sheet_id ASC
+          LIMIT ${parseInt(limit)}
+        `;
+      }
+    });
+ 
     return NextResponse.json({
       success: true,
       count: videos.length, 
       videos: videos        
     });
-
+ 
   } catch (error) {
     console.error('Error fetching videos:', error);
     return NextResponse.json({

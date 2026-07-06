@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import OfficersCard from "@/components/officers-card";
 import MemberCard from "@/components/members-card";
 import { neon } from '@neondatabase/serverless';
+import { getCached } from '@/lib/redis';
 
 const sql = neon(process.env.DATABASE_URL!);
 
@@ -24,11 +25,13 @@ interface Member {
 
 async function getOfficers(): Promise<Officer[]> {
   try {
-    const rows = await sql`SELECT * FROM officers ORDER BY id ASC` as Officer[];
-    return rows.map(row => ({
-      ...row,
-      image: row.image ? `/images/officers/${row.image}` : null,
-    }));
+    return await getCached('members-page:officers', 60, async () => {
+      const rows = await sql`SELECT * FROM officers ORDER BY id ASC` as Officer[];
+      return rows.map(row => ({
+        ...row,
+        image: row.image ? `/images/officers/${row.image}` : null,
+      }));
+    });
   } catch (error) {
     console.error('Error fetching officers:', error);
     return [];
@@ -37,11 +40,13 @@ async function getOfficers(): Promise<Officer[]> {
 
 async function getMembers(): Promise<Member[]> {
   try {
-    const rows = await sql`SELECT * FROM members ORDER BY name ASC` as Member[];
-    return rows.map(row => ({
-      ...row,
-      image: row.image ? `/images/members/${row.image}` : null,
-    }));
+    return await getCached('members-page:members', 60, async () => {
+      const rows = await sql`SELECT * FROM members ORDER BY name ASC` as Member[];
+      return rows.map(row => ({
+        ...row,
+        image: row.image ? `/images/members/${row.image}` : null,
+      }));
+    });
   } catch (error) {
     console.error('Error fetching members:', error);
     return [];
