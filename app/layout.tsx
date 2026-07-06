@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     description: "Official page of Central Philippine University - College of Nursing's Dancing Nurses Association.",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  }
 };
 
 export const viewport: Viewport = {
