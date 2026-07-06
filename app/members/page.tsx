@@ -99,7 +99,7 @@ export default async function MembersPage() {
                     key={adviser.id}
                     name={adviser.name}
                     position={adviser.position}
-                    imageUrl={adviser.image}
+                    imageUrl="/logo.svg"
                   />
                 ))}
               </div>
