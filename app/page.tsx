@@ -7,6 +7,7 @@ import MerchCard from '@/components/merch-card';
 import MerchPopup from '@/components/merch-popup';
 import { neon } from '@neondatabase/serverless';
 import { getCached } from '@/lib/redis';
+import { Analytics } from "@vercel/analytics/next"
 
 const sql = neon(process.env.DATABASE_URL!);
 
@@ -176,6 +177,7 @@ export default async function Home() {
           <p className="text-gray-500 text-sm sm:text-base">© {new Date().getFullYear()} .charchives - All rights reserved</p>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
