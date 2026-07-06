@@ -10,8 +10,6 @@ The official web platform for the Dancing Nurses Association (D.N.A.) of the Cen
 
 **Performance Gallery:** Integration with video data to showcase the group's wide range of artistic works.
 
-**Google Sheets Sync:** An administrative sync system that pulls real-time data from Google Sheets into a Vercel Postgres database.
-
 ## 🛠️ Tech Stack
 - **Framework:** Next.js (App Router)
 
@@ -21,15 +19,13 @@ The official web platform for the Dancing Nurses Association (D.N.A.) of the Cen
 
 - **Database:** Vercel Postgres (SQL)
 
-- **External API:** Google Sheets API v4
-
+- **Caching:** Upstash for Redis
+  
 - **Deployment:** Vercel
 
 ## 🏗️ Getting Started
 **Prerequisites**
 - Node.js 18.x or later
-
-- A Google Service Account with access to your project's Spreadsheet
 
 - Vercel Postgres database instance
 
@@ -38,11 +34,3 @@ The official web platform for the Dancing Nurses Association (D.N.A.) of the Cen
 Developed for the Dancing Nurses Association of Central Philippine University.
 
 "One blood, One gene."
-
-## Run this every update in the Gsheets
-
-Invoke-RestMethod -Uri https://dna-official-page.vercel.app/api/sync-sheets -Method POST
-
-Invoke-RestMethod -Uri http://localhost:3000/api/sync-sheets -Method POST
-
---ongoing
