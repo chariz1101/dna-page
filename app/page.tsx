@@ -6,39 +6,17 @@ import OfficersCard from '@/components/officers-card';
 import MerchCard from '@/components/merch-card'; 
 import MerchPopup from '@/components/merch-popup';
 import { neon } from '@neondatabase/serverless';
+import { getCached } from '@/lib/redis';
 
 const sql = neon(process.env.DATABASE_URL!);
 
 export const dynamic = 'force-dynamic';
-// Static Data
-// const featuredMerch = [
-//   {
-//     id: 1,
-//     title: "Sleek Black and Crisp White Tee",
-//     variations: "Black, White",
-//     link: "https://www.facebook.com/cpucondna/posts/pfbid02BrsbMvTDihKXCBYPfriLfn3tNWoscBPdG5Y3xNukuKv7EsSs6NJhD4ysAakPbq5Xl",
-//     image: "https://scontent.fceb6-4.fna.fbcdn.net/v/t39.30808-6/495000968_699660745951261_5380665596613515298_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG9hEjur0QszySkDj3OfeF4SFv9apwqb_9IW_1qnCpv_zRnWynwxcvQfxa97QKkqfVzrgN89qpshSnNJa6MdZhZ&_nc_ohc=o0DCoP-lJn8Q7kNvwG9hRza&_nc_oc=AdlH1TDjz62K7lNxogPWtmYQ33VJgiMoZciRxmx9ruxDEr3_3tn4Mp5ZZIHru5uolow&_nc_zt=23&_nc_ht=scontent.fceb6-4.fna&_nc_gid=mzHIEKlr1NQ4Tef1OpyTUQ&oh=00_AftISU4j4a6cvcgDKPdWVzOlefyKZBwQp3HRYLwR4NRr6Q&oe=698FF229" 
-//   },
-//   {
-//     id: 2,
-//     title: "Rock your D.N.A Shirt",
-//     variations: "Black, White",
-//     link: "https://www.facebook.com/cpucondna/posts/pfbid02sQ4p4JjjnNzP89ke4cs5XcvXrhHfJj4KsZySZEDu1H4oH8Yt7ciGBVhUhGAhNd78l",
-//     image: "https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/484860773_666764385907564_7255658188100181093_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGCC_-afx1L5QUR_NRgb7ZUT6ViHL8nCaNPpWIcvycJozD79lx3khOfPXX2fM1TUNmlAjgXs27S9KlgGf59gdG3&_nc_ohc=YDcAzuCwy6EQ7kNvwFqazeD&_nc_oc=AdkIc8jeFwsFB5X5ovAl9tYcbqk3mdohggSgOYg1OAf60UrJjsw08SPyIASOsQUPckQ&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=qGd4Bf4gA53ozT_cHHamHw&oh=00_AfsTcspsRCfAO0x2tMv0yxlxsZf8JLCVd4Qh7I8iGTDQaQ&oe=698FF8CD"
-//   },
-//   {
-//     id: 3,
-//     title: "It's in our D.N.A Shirt",
-//     variations: "Black",
-//     link: "https://www.facebook.com/cpucondna/posts/pfbid031K5ieBCodrw2yjU3N4jtPUMpnTPA73zNiVHYJwWm9JEnWTZvtP7dGwsXptVUALxJl",
-//     image: "https://scontent.fmnl4-5.fna.fbcdn.net/v/t39.30808-6/632696972_923127213604612_7792352585874860307_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeEf5O2tXlYeRvmMTTVx1jNOcH9w8rKOLDdwf3Dyso4sN5dupiTWInucFaux3n1ojJfM9ZAFKMo4CTxOtgj4aVir&_nc_ohc=ljcgpSWheJwQ7kNvwF2GifV&_nc_oc=Admm9bWowfYD3xw5_h7v44F4USlxQVyJoeGVmo5cu3q-gWPmTeJVFVp4KeiDW09SEPU&_nc_zt=23&_nc_ht=scontent.fmnl4-5.fna&_nc_gid=WWGm6n6233absdfy-7t0Mg&oh=00_Aft4fJ818Sv1RWMcOK7PY3VKX0wRDSNyFklvu1w-t6x1vQ&oe=699B8726"
-//   },
-// ];
 
 async function getVideos() {
   try {
-    const rows= await sql`SELECT * FROM videos ORDER BY sheet_id DESC LIMIT 4`;
-    return rows;
+    return await getCached('home:videos', 60, async () => {
+      return await sql`SELECT * FROM videos ORDER BY sheet_id DESC LIMIT 4`;
+    });
   } catch (error) { return []; }
 }
 
@@ -51,11 +29,13 @@ interface Officer {
 
 async function getFeaturedOfficers(): Promise<Officer[]> {
   try {
-    const rows = await sql`SELECT id, name, position, image FROM officers ORDER BY id ASC LIMIT 4` as Officer[];
-    return rows.map(row => ({
-      ...row,
-      image: row.image ? `/images/officers/${row.image}` : null,
-    }));
+    return await getCached('home:officers', 60, async () => {
+      const rows = await sql`SELECT id, name, position, image FROM officers ORDER BY id ASC LIMIT 4` as Officer[];
+      return rows.map(row => ({
+        ...row,
+        image: row.image ? `/images/officers/${row.image}` : null,
+      }));
+    });
   } catch (error) { return []; }
 }
 
@@ -159,33 +139,6 @@ export default async function Home() {
       </div>
 
       <hr className="border-white/10 mx-4 sm:mx-8" />
-
-      {/* Merch
-      <div className="container-custom py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="mb-8 sm:mb-10 md:mb-12 fade-in flex justify-between items-end">
-          <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase mb-2 sm:mb-3">Merchandise</h2>
-            <p className="text-gray-400 text-base sm:text-lg md:text-xl">Support with official gear.</p>
-          </div>
-          <Link href="/merch" className="hidden sm:block text-[#00ff88] uppercase tracking-widest text-sm hover:underline hover:text-white transition-colors">
-            View All →
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 stagger-children">
-          {featuredMerch.map((item) => (
-            <MerchCard key={item.id} {...item} />
-          ))}
-        </div>
-
-        <div className="mt-8 text-center sm:hidden">
-            <Link href="/merch" className="inline-block px-6 py-2 border border-[#00ff88] text-[#00ff88] text-sm font-bold uppercase tracking-widest rounded-full">
-              View All Collection
-            </Link>
-        </div>
-      </div>
-
-      <hr className="border-white/10 mx-4 sm:mx-8" /> */}
 
       {/* About Us */}
       <div className="container-custom py-12 sm:py-16 md:py-20 lg:py-24">
